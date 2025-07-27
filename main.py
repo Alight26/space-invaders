@@ -30,9 +30,22 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    # keyboard movement of the character
+         # keyboard movement of the character
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                playerX_change -= 0.3
+                print("Left arrow pressed")
+
+            if event.key == pygame.K_RIGHT:
+                playerX_change += 0.3
+                print("Right arrow is pressed")
+
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                playerX_change = 0
+                print("Keystroke has been released")
 
 
-
+    playerX += playerX_change
     player(playerX, playerY)
     pygame.display.update()
