@@ -1,4 +1,5 @@
 import pygame
+import random
 
 # this initializes the game
 pygame.init()
@@ -15,9 +16,19 @@ playerX = 370
 playerY = 480
 playerX_change = 0
 
+# Enemy
+enemyimg = pygame.image.load('enemy.png')
+enemyX = random.randint(0, 736)
+enemyY = random.randint(50, 150)
+enemyX_change = 0
+
 def player(x, y):
     #blit means draw
     screen.blit(playerimg, (x, y))
+
+def enemy(x, y):
+    #blit means draw
+    screen.blit(enemyimg, (x, y))
 
 # game loop
 running = True
@@ -49,11 +60,12 @@ while running:
     playerX += playerX_change
 
     # setting the boundries
-    
+
     if playerX <= 0:
         playerX = 0
     elif playerX >= 736:
         playerX = 736
 
     player(playerX, playerY)
+    enemy(enemyX, enemyY)
     pygame.display.update()
